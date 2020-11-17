@@ -7,7 +7,6 @@ public class InGameUIManager : MonoBehaviour,IManager
 {
     [SerializeField]Canvas Game;
     [SerializeField] Canvas PauseGame;
-    //[SerializeField] Canvas UI;
     [SerializeField]Canvas EndGame;
     [SerializeField] Canvas Fader;
 
@@ -23,6 +22,7 @@ public class InGameUIManager : MonoBehaviour,IManager
     [SerializeField] Text congratulations;
     [SerializeField] Button restartButton;
 
+    //initialize fields
     public void StartManager()
     {
         PauseGame.gameObject.SetActive(false);
@@ -31,6 +31,8 @@ public class InGameUIManager : MonoBehaviour,IManager
         //UI.gameObject.SetActive(true);
         Fader.gameObject.SetActive(true);
     }
+    
+    //return all health points
     void RestartHearts()
     {
         for(int i=0;i<3;i++)
@@ -38,6 +40,8 @@ public class InGameUIManager : MonoBehaviour,IManager
             hearts[i].SetBool("Damage",false);
         }
     }
+    
+    //get damage from miss
     public void Damage(int health)
     {
         if(health>=0 &health<=2)
