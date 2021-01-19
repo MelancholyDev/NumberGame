@@ -10,7 +10,7 @@ public class GameModeSN3x3 : AbstractGameMode
         38, 39, 40, 42, 44, 45, 46, 48, 49, 50, 51, 52, 54, 55, 56, 57, 58, 60, 62, 63, 64, 65, 66, 70, 72, 74, 75, 76, 77,
         78, 80, 81, 82, 84, 85, 86, 87, 88, 90, 91, 92, 93, 94, 95, 96, 98, 99};
 
-    bool isLevelCompleted = false;
+    bool isLevelCompleted;
 
     public GameModeSN3x3()
     {
@@ -47,30 +47,12 @@ public class GameModeSN3x3 : AbstractGameMode
         throw new System.NotImplementedException();
     }
 
-    /*
-    public int[] DeleteElement(int[] arr, int j)
-    {
-        int[] a = new int[arr.Length];
-
-        for (int i = 0; i < j; i++)
-            a[i] = arr[i];
-
-        for (int i = j + 1; i < arr.Length; i++)
-            a[i - 1] = arr[i];
-
-        return a;
-    }   
-    */
 
     public override bool CompleteLevel()
     {
         return correctids.Count == 0;
     }
-
-    public override void RestartAllParameters()
-    {
-        GameManager.ingamemanager.RestartAllParameters(100);
-    }
+    
 
     public override void ShuffleArrayOfTiles()
     {
@@ -120,7 +102,7 @@ public class GameModeSN3x3 : AbstractGameMode
             IDS[b] = switcher;
         }
 
-        for (int i = 0; i < GameManager.ingamemanager.tiles.Length; i++)
-            GameManager.ingamemanager.tiles[i].ChangeId("id1" + IDS[i]);
+       // for (int i = 0; i < GameManager.ingamemanager.tiles.Length; i++)
+           // GameManager.ingamemanager.tiles[i].ChangeId("id1" + IDS[i]);
     }
 }

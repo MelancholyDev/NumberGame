@@ -10,8 +10,6 @@ public class TileUISpawner : MonoBehaviour
     float rightborderspawn = 2.5f;
     float ycord=6;
     float delay=0.3f;
-    System.Random rnd=new System.Random();
-    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(SpawnTiles());
@@ -27,7 +25,6 @@ public class TileUISpawner : MonoBehaviour
             spawned=Instantiate(prefab);
             spawned.transform.position = new Vector3(xcord,ycord,1);
             spawned.GetComponent<SpriteRenderer>().sprite = sprites[Random.Range(0, 8)];
-        
             yield return new WaitForSeconds(delay);
         }
     }

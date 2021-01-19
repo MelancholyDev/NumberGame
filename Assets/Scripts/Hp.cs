@@ -20,14 +20,12 @@ public class Hp : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             anim.SetBool("Death",true);
-            Debug.Log("asdad");
         }
         
     }
 
     void OnMouseDown()
     {
-       // anim = GetComponent<Animator>();
-       anim.Play("HpAnimation");
+        anim.Play("HpAnimation");
     }
 }

@@ -13,6 +13,7 @@ public class GameMode3x3 : AbstractGameMode
         correctid = 1;
 
         name = "3x3";
+        timer = 30;
     }
 
     public override void CalculateNextCorrectId(bool first=false)
@@ -20,7 +21,7 @@ public class GameMode3x3 : AbstractGameMode
         if (first)
             correctid = 1;
         else
-        correctid++;
+            correctid++;
     }
 
     public override bool CheckoutCorrectId(Tile tile)
@@ -30,7 +31,7 @@ public class GameMode3x3 : AbstractGameMode
             CalculateNextCorrectId();
             return true;
         }
-        else return false;
+        return false;
     }
 
     public override bool CompleteLevel()
@@ -41,12 +42,9 @@ public class GameMode3x3 : AbstractGameMode
             correctid = 1;
             return true;
         }
-        else return false;
+        return false;
 
     }
 
-    public override void RestartAllParameters()
-    {
-        GameManager.ingamemanager.RestartAllParameters(10);
-    }
+   
 }

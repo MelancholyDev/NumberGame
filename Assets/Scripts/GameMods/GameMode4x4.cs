@@ -8,7 +8,7 @@ public class GameMode4x4 : AbstractGameMode
 
     public GameMode4x4()
     {
-        keysForNumbers = new string[17] { "id10", "id11", "id12", "id13", "id14", "id15",
+        keysForNumbers = new[] { "id10", "id11", "id12", "id13", "id14", "id15",
                     "id16", "id17", "id18", "id19", "id0A10", "id0B11", "id0C12",
                     "id0D13", "id0E14", "id0F15", "id0G16"};
  
@@ -44,13 +44,9 @@ public class GameMode4x4 : AbstractGameMode
             correctid = 1;
             return true;
         }
-        else return false;
+        return false;
 
     }
-
-    public override void RestartAllParameters()
-    {
-        GameManager.ingamemanager.RestartAllParameters(1000);
-    }
+    
 }
 

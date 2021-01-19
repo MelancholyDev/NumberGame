@@ -1,50 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
     TextMesh text; 
-    public float _id { get; private set; }
+    public int _id { get; private set; }
 
     void Awake()
     {
         text = GetComponentInChildren<TextMesh>();
     }
 
-    public void ChangeId(string id)
+    public void ChangeId(int id)
     {
-        if (id[2] != '0')
+        if (id == -1)
+            text.text = "";
+        else
         {
-            string cur = id.Substring(3);
-            int x = 0;
-            int.TryParse(cur, out x);
-            _id = x;
-            if (x != 0)
-                text.text = x.ToString();
-            else
-                text.text = "";
-        }else
-        {
-            Debug.Log("ID:" + id);
-            char symbol = id[3];
-            string cur = id.Substring(4);
-            int x = 0;
-            int.TryParse(cur, out x);
-            _id = x;
-            if (x != 0)
-                text.text = ""+symbol;
-            else
-                text.text = "";
+            text.text = id.ToString();
         }
 
     }
 
     void OnMouseDown()
     {
-
-        if (GameManager.ingamemanager.initializer.CurGM.CheckoutCorrectId(this))
-            ChangeId("id10");
+        if (GameManager.ingamemanager.curGm.CheckoutCorrectId(this))
+            ChangeId(-1);
         else
             GameManager.ingamemanager.Damage();
       

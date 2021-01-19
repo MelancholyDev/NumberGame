@@ -45,11 +45,7 @@ public class GameModeSN4x4 : AbstractGameMode
     {
         return correctids.Count == 0;
     }
-
-    public override void RestartAllParameters()
-    {
-        GameManager.ingamemanager.RestartAllParameters(100);
-    }
+    
 
     public override void ShuffleArrayOfTiles()
     {
@@ -97,7 +93,7 @@ public class GameModeSN4x4 : AbstractGameMode
             IDS[b] = switcher;
         }
 
-        for (int i = 0; i < GameManager.ingamemanager.tiles.Length; i++)
-            GameManager.ingamemanager.tiles[i].ChangeId("id1" + IDS[i]);
+        //for (int i = 0; i < GameManager.ingamemanager.tiles.Length; i++)
+        //    GameManager.ingamemanager.tiles[i].ChangeId("id1" + IDS[i]);
     }
 }

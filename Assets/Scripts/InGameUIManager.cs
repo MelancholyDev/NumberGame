@@ -8,12 +8,6 @@ public class InGameUIManager : MonoBehaviour,IManager
     [SerializeField]Canvas Game;
     [SerializeField] Canvas PauseGame;
     [SerializeField]Canvas EndGame;
-    [SerializeField] Canvas Fader;
-
-    [SerializeField] public Text timer;
-    [SerializeField] public Text score;
-    [SerializeField] public Text FinalScore;
-    [SerializeField] public Text Record;
     [SerializeField] Animator[] hearts;
     [SerializeField] Button pause;
     
@@ -25,14 +19,9 @@ public class InGameUIManager : MonoBehaviour,IManager
     //initialize fields
     public void StartManager()
     {
-        PauseGame.gameObject.SetActive(false);
-        EndGame.gameObject.SetActive(false);
-        Game.gameObject.SetActive(false);
-        //UI.gameObject.SetActive(true);
-        Fader.gameObject.SetActive(true);
     }
     
-    //return all health points
+    //Возвращает все сердечки в исходное состояние
     void RestartHearts()
     {
         for(int i=0;i<3;i++)
@@ -44,23 +33,10 @@ public class InGameUIManager : MonoBehaviour,IManager
     //get damage from miss
     public void Damage(int health)
     {
-        if(health>=0 &health<=2)
+        if(health>=0 & health<=2)
         hearts[health].SetBool("Damage",true);
     }
-    public void ShowGame()
-    {
-        Game.gameObject.SetActive(true);
-        EndGame.gameObject.SetActive(false);
-        PauseGame.gameObject.SetActive(false);
-    }
-
-    public void RestartGameCanvas()
-    {
-        timer.gameObject.SetActive(true);
-        score.gameObject.SetActive(true);
-        pause.gameObject.SetActive(true);
-        RestartHearts();
-    }
+    
     public void ShowEndGame(bool flag = false)
     {
         EndGame.gameObject.SetActive(true);
@@ -68,7 +44,7 @@ public class InGameUIManager : MonoBehaviour,IManager
         PauseGame.gameObject.SetActive(false);
         if (flag)
             NewRecordAnim();
-        FinalScore.text = score.text;
+                //FinalScore.text = score.text;
     }
 
     public void PauseGameFunc()
@@ -84,25 +60,6 @@ public class InGameUIManager : MonoBehaviour,IManager
         EndGame.gameObject.SetActive(false);
         Game.gameObject.SetActive(true);
     }
-
-    public void RestartEndGameCanvas()
-    {
-        finalScore.gameObject.SetActive(true);
-        congratulations.gameObject.SetActive(true);
-        restartButton.gameObject.SetActive(true);
-    }
-    public void ShowMenu()
-    {
-        EndGame.gameObject.SetActive(false);
-        Game.gameObject.SetActive(false);
-    }
-
-    public void SetActiveFalseForUI()
-    {
-        PauseGame.gameObject.SetActive(false);
-        EndGame.gameObject.SetActive(false);
-        Game.gameObject.SetActive(false);
-    } 
 
     public void LoadMainMenu()
     {
